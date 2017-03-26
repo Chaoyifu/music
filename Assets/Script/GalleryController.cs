@@ -18,14 +18,6 @@ public class GalleryController : MonoBehaviour
     {
         lastX = Input.mousePosition.x;
 
-        if (GameInfo.gameState == 1)
-        {
-            Application.LoadLevel(Application.loadedLevel + 1);
-        }
-        if (GameInfo.gameState == 2)
-        {
-            Application.LoadLevel(Application.loadedLevel + 2);
-        }
     }
     void OnMouseDrag()
     {
@@ -34,7 +26,7 @@ public class GalleryController : MonoBehaviour
         else {
             Ismoving = true;
             float distance = Input.mousePosition.x - lastX;
-            if (distance < -30f)
+            if (distance < -10f)
             {
                 for (int i = 0; i < GalleryItem.Length; i++)
                 {
@@ -58,7 +50,7 @@ public class GalleryController : MonoBehaviour
                     }
                 }
             }
-            if (distance > 30f)
+            if (distance > 10f)
             {
                 for (int i = 0; i < GalleryItem.Length; i++)
                 {
