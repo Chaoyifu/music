@@ -1,8 +1,6 @@
-﻿/*using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using VRStandardAssets.Utils;
-
 public class ClickFunction : MonoBehaviour
 {
 
@@ -10,18 +8,14 @@ public class ClickFunction : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Sound = GetComponent<AudioSource>();
+        Sound = this.GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
-    }
-
-    private void HandleClick() {
+    private void OnMouseDown() {
         Sound.Play();
     }
-}*/
-using UnityEngine;
+}
+/*using UnityEngine;
 using VRStandardAssets.Utils;
 
 namespace VRStandardAssets.Examples
@@ -59,4 +53,4 @@ namespace VRStandardAssets.Examples
         }
     }
 
-}
+}*/

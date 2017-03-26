@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VRStandardAssets.Utils;
@@ -38,4 +38,22 @@ namespace VRStandardAssets.Examples
         }
     }
 
+}*/
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class toggleToGameScene2 : MonoBehaviour
+{
+
+    // Use this for initialization
+    void Start()
+    {
+    }
+
+    private void OnMouseDown()
+    {
+        GameInfo.gameState = 2;
+        Application.LoadLevel(Application.loadedLevel + 1);
+    }
 }

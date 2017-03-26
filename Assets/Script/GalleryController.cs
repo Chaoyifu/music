@@ -22,7 +22,7 @@ public class GalleryController : MonoBehaviour {
             Application.LoadLevel(Application.loadedLevel + 2);
         }
     }
-    void OnMouseDrag()
+    /*void OnMouseDrag()
     {
         float distance = Input.mousePosition.x - lastX;
         Debug.Log(distance);
@@ -62,5 +62,5 @@ public class GalleryController : MonoBehaviour {
                 }
             }
         }
-    }
+    }*/
 }
