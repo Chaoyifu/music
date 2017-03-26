@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GalleryController : MonoBehaviour {
+public class GalleryController : MonoBehaviour
+{
 
     public GameObject[] GalleryItem;
     private float lastX;
-	// Use this for initialization
-	void Start () {
+    private bool Ismoving = false;
+    // Use this for initialization
+    void Start()
+    {
+
     }
 
-    void OnMouseDown() {
+    void OnMouseDown()
+    {
         lastX = Input.mousePosition.x;
-        Debug.Log(lastX);
 
-        if (GameInfo.gameState == 1) {
+        if (GameInfo.gameState == 1)
+        {
             Application.LoadLevel(Application.loadedLevel + 1);
         }
         if (GameInfo.gameState == 2)
@@ -22,45 +27,62 @@ public class GalleryController : MonoBehaviour {
             Application.LoadLevel(Application.loadedLevel + 2);
         }
     }
-    /*void OnMouseDrag()
+    void OnMouseDrag()
     {
-        float distance = Input.mousePosition.x - lastX;
-        Debug.Log(distance);
-        if (distance < -0.5f) {
-            for (int i = 0; i < GalleryItem.Length; i++) {
-                if (GalleryItem[i].transform.rotation.y < 45f)
-                {
-                    GalleryItem[i].transform.Rotate(0, 45f, 0);
-                    if (GalleryItem[i].transform.rotation.y == 90f)
-                        GalleryItem[i].transform.position = new Vector3(GalleryItem[i].transform.position.x + 0.6f, GalleryItem[i].transform.position.y, GalleryItem[i].transform.position.z + 0.2f);
-                    else
-                        GalleryItem[i].transform.position = new Vector3(GalleryItem[i].transform.position.x + 0.6f, GalleryItem[i].transform.position.y, GalleryItem[i].transform.position.z);
-                }
-                else
-                {
-                    GalleryItem[i].transform.Rotate(0, -90f, 0);
-                    GalleryItem[i].transform.position = new Vector3(GalleryItem[i].transform.position.x - 1.2f, GalleryItem[i].transform.position.y, GalleryItem[i].transform.position.z);
-                }
-            }
-        }
-        if (distance > 0.5f)
-        {
-            for (int i = 0; i < GalleryItem.Length; i++)
+        if (Ismoving == true)
+            return;
+        else {
+            Ismoving = true;
+            float distance = Input.mousePosition.x - lastX;
+            if (distance < -30f)
             {
-                if (GalleryItem[i].transform.rotation.y > -45f)
+                for (int i = 0; i < GalleryItem.Length; i++)
                 {
-                    GalleryItem[i].transform.Rotate(0, -45f, 0);
-                    if (GalleryItem[i].transform.rotation.y == 90f)
-                        GalleryItem[i].transform.position = new Vector3(GalleryItem[i].transform.position.x + 0.6f, GalleryItem[i].transform.position.y, GalleryItem[i].transform.position.z + 0.2f);
+                    if (GalleryItem[i].transform.position.x < 1f)
+                    {
+                        if (GalleryItem[i].transform.position.x > -0.5f)
+                        {
+                            GalleryItem[i].transform.position = new Vector3(1.27f, GalleryItem[i].transform.position.y, -2.9f);
+                            GalleryItem[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 125);
+                        }
+                        else
+                        {
+                            GalleryItem[i].transform.position = new Vector3(0f, GalleryItem[i].transform.position.y, -2.7f);
+                            GalleryItem[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+                        }
+                    }
                     else
-                        GalleryItem[i].transform.position = new Vector3(GalleryItem[i].transform.position.x + 0.6f, GalleryItem[i].transform.position.y, GalleryItem[i].transform.position.z);
+                    {
+                        GalleryItem[i].transform.position = new Vector3(-1.27f, GalleryItem[i].transform.position.y, -2.9f);
+                        GalleryItem[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 125);
+                    }
                 }
-                else
+            }
+            if (distance > 30f)
+            {
+                for (int i = 0; i < GalleryItem.Length; i++)
                 {
-                    GalleryItem[i].transform.Rotate(0, 90f, 0);
-                    GalleryItem[i].transform.position = new Vector3(GalleryItem[i].transform.position.x + 1.2f, GalleryItem[i].transform.position.y, GalleryItem[i].transform.position.z);
+                    if (GalleryItem[i].transform.position.x > -1f)
+                    {
+                        if (GalleryItem[i].transform.position.x < 0.5f)
+                        {
+                            GalleryItem[i].transform.position = new Vector3(1.27f, GalleryItem[i].transform.position.y, -2.9f);
+                            GalleryItem[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 125);
+                        }
+                        else
+                        {
+                            GalleryItem[i].transform.position = new Vector3(0f, GalleryItem[i].transform.position.y, -2.7f);
+                            GalleryItem[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+                        }
+                    }
+                    else
+                    {
+                        GalleryItem[i].transform.position = new Vector3(1.27f, GalleryItem[i].transform.position.y, -2.9f);
+                        GalleryItem[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 125);
+                    }
                 }
             }
         }
-    }*/
+        Ismoving = false;
+    }
 }
